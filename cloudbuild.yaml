@@ -2,8 +2,14 @@ steps:
   # Step 1: Build Docker image
   - name: 'gcr.io/cloud-builders/docker'
     args:
-      ['build', '-t', 'us-central1-docker.pkg.dev/cloudside-academy/my-docker-reposandy:$BUILD_ID', '.']
+      - build
+      - -t
+      - us-central1-docker.pkg.dev/cloudside-academy/my-docker-reposandy/my-app:latest
+      - .
 
-   - name: 'gcr.io/cloud-builders/docker'
+  # Step 2: Push Docker image
+  - name: 'gcr.io/cloud-builders/docker'
     args:
-      ['push', 'us-central1-docker.pkg.dev/cloudside-academy/my-docker-reposandy:$BUILD_ID']
+      - push
+      - us-central1-docker.pkg.dev/cloudside-academy/my-docker-reposandy/my-app:latest
+
