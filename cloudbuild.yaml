@@ -1,0 +1,8 @@
+steps:
+  # Step 1: Build Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      ['build', '-t', 'gcr.io/cloudside-academy/my-app:$BUILD_ID', '.']
+
+images:
+  - 'gcr.io/cloudside-academy/my-app:$BUILD_ID'
