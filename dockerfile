@@ -1,8 +1,9 @@
 FROM python:3.11
 WORKDIR /app
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-COPY . .
-ENV PORT=8080
-CMD ["python", "main.py"]
 
+# If you don't have requirements.txt, install directly
+RUN pip install flask
+
+COPY . .
+
+CMD ["python", "app.py"]
