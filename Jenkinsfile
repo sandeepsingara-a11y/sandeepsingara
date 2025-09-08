@@ -9,7 +9,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO.git'
+                    url: 'https://github.com/sandeepsingara-ally/sandeepsingara.git'
             }
         }
 
