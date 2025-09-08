@@ -1,30 +1,26 @@
 pipeline {
     agent any
 
-    triggers {
-        githubPush()
-    }
-
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main',
-                    url: 'https://github.com/sandeepsingara-ally/sandeepsingara.git'
+                git branch: 'main', url: 'https://github.com/sandeepsingara-a11y/sandeepsingara.git'
             }
         }
 
-        stage('Build Hello Docker') {
+        stage('Build Docker Image') {
             steps {
-                sh '''
-                  echo "FROM alpine:latest\nCMD echo Hello World from Jenkins" > Dockerfile
-                  docker build -t hello-world:latest .
-                '''
+                script {
+                    docker.build("hello-world-app:latest", ".")
+                }
             }
         }
 
-        stage('Run Container') {
+        stage('Run Docker Container') {
             steps {
-                sh 'docker run --rm hello-world:latest'
+                script {
+                    docker.image("hello-world-app:latest").run()
+                }
             }
         }
     }
