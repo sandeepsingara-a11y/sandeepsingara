@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Run Container') {
             steps {
-                sh 'docker run --rm hello-world-app'
+                sh 'docker run -d --name hello-world-app hello-world-app'
             }
         }
     }
