@@ -2,10 +2,15 @@ pipeline {
     agent any
     stages {
         stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/USERNAME/my-docker-app.git'
-            }
-        }
+    steps {
+        git(
+            url: 'https://github.com/sandeepsingara-a11y/sandeepsingara.git',
+            credentialsId: 'gitthub-pat',
+            branch: 'main'
+        )
+    }
+}
+
         stage('Build Docker Image') {
             steps {
                 script {
